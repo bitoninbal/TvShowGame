@@ -15,10 +15,10 @@ export const useMissingLetters = () => {
   const [wrongAnswer, setWrongAnswer] = useState<number>(0);
   const [status, setStatus] = useState<string>(startGame);
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.ON_GAME);
-
-  const [wordWithMissingLeters, setWordWithMissingLeters] = useState<string[]>(
-    []
-  );
+  const [hintOverview, setHintOverview] = useState<string>("");
+  const [wordWithMissingLeters, setWordWithMissingLeters] = useState<
+    [string[]]
+  >([[]]);
   const [tvShowData, setTvShowData] = useState<TvShowData>();
 
   useEffect(() => {
@@ -31,21 +31,13 @@ export const useMissingLetters = () => {
 
   useEffect(() => {
     if (tvShowData) {
-      console.log("data", tvShowData);
       setCurrentWord(tvShowData.results[wordIndex].name);
     }
-  }, [tvShowData]);
+  }, [tvShowData, wordIndex]);
 
   useEffect(() => {
-    const temp = currentWord.split("");
-    // const randomIndex = Math.floor(Math.random() * (currentWord.length + 1));
-    // temp[randomIndex] = "";
-    setWordWithMissingLeters(temp);
+    createMissingLetters(currentWord);
   }, [currentWord]);
-
-  useEffect(() => {
-    if (tvShowData) setCurrentWord(tvShowData.results[wordIndex].name);
-  }, [wordIndex]);
 
   useEffect(() => {
     if (lifePoint === 0) {
@@ -54,11 +46,27 @@ export const useMissingLetters = () => {
     }
   }, [lifePoint]);
 
+  const createMissingLetters = (currentWord: string) => {
+    const splitToWords = currentWord.split(" ");
+    const arr: [string[]] = [[]];
+    splitToWords.map((word) => {
+      const temp = word.split("");
+      const randomIndex1 = Math.floor(Math.random() * (temp.length + 1));
+      const randomIndex2 = Math.floor(Math.random() * (temp.length + 1));
+      temp[randomIndex1] = "";
+      temp[randomIndex2] = "";
+      arr.push(temp);
+    });
+    setWordWithMissingLeters(arr);
+  };
+
   const handleCheckTheGusseButtonClick = () => {
     if (answer === currentWord) {
       setWordIndex(wordIndex + 1);
       setRightAnswer(rightAnswer + 1);
       setScore(score + 1);
+      setHintOverview("");
+      setAnswer("");
     } else {
       setWrongAnswer(wrongAnswer + 1);
       setLifePoint(lifePoint - 1);
@@ -84,6 +92,11 @@ export const useMissingLetters = () => {
     setGameStatus(GameStatus.ON_GAME);
   };
 
+  const handleHintIcon = () => {
+    setNumOfHint(numOfHint + 1);
+    setHintOverview(tvShowData!.results[wordIndex].overview);
+  };
+
   return {
     wordWithMissingLeters,
     handleCheckTheGusseButtonClick,
@@ -91,5 +104,12 @@ export const useMissingLetters = () => {
     gameStatus,
     status,
     initGameParams,
+    numOfHint,
+    rightAnswer,
+    wrongAnswer,
+    lifePoint,
+    handleHintIcon,
+    hintOverview,
+    answer,
   };
 };

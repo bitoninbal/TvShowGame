@@ -27,14 +27,35 @@ export const IconsStyled = styled.div`
   align-self: flex-start;
 `;
 
+export const LifeStatusStyled = styled.div`
+  color: white;
+`;
+
+export const HintOverViewStyled = styled.p`
+  color: white;
+  text-align: center;
+`;
+
+export const IconsWrapperStyled = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
+
+export const PopOverContentStyled = styled.p`
+  background: beige;
+  font-family: cursive;
+`;
+
 export const CenterStyled = styled.div`
   height: 137px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
-  height: 307px;
+  padding: 9px;
+  height: 395px;
 `;
 
 export const UlStyled = styled.ul`

@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { useMissingLetters } from "../Hooks/useMissingLetters";
 import { GameStatus } from "../Types";
 
 interface ButtonsComponentProps {

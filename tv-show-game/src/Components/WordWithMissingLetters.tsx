@@ -1,5 +1,4 @@
 import React from "react";
-import { useMissingLetters } from "../Hooks/useMissingLetters";
 import { LiStyled, UlStyled } from "../Styles";
 
 interface WordWithMissingLettersProps {
@@ -10,9 +9,11 @@ export const WordWithMissingLetters = (props: WordWithMissingLettersProps) => {
 
   return (
     <UlStyled>
-      {wordWithMissingLeters.map((letter: string, index: number) => {
-        return <LiStyled key={index}> {letter}</LiStyled>;
-      })}
+      {wordWithMissingLeters.map((word: string[]) =>
+        word.map((letter: string, index: number) => {
+          return <LiStyled key={index}> {letter}</LiStyled>;
+        })
+      )}
     </UlStyled>
   );
 };
