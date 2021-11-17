@@ -1,5 +1,5 @@
 import React from "react";
-import { LiStyled, UlStyled } from "../Styles";
+import { LiStyled, UlStyled } from "../Styles/Styles";
 
 interface WordWithMissingLettersProps {
   wordWithMissingLeters: any;

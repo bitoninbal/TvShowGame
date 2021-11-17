@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { GameStatus } from "../Types";
+import { GameStatus } from "../Types/Types";
 
 interface ChackTheGuessProps {
   onCheckTheGuessClick: () => void;

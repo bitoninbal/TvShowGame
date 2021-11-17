@@ -2,7 +2,11 @@ import React from "react";
 import IconButton from "@mui/material/IconButton";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
-import { IconsStyled, IconsWrapperStyled, LifeStatusStyled } from "../Styles";
+import {
+  IconsStyled,
+  IconsWrapperStyled,
+  LifeStatusStyled,
+} from "../Styles/Styles";
 import { Tooltip } from "@mui/material";
 import { StatisticPopover } from "./StatisticPopover";
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GameStatus, TvShowData } from "../Types";
+import { GameStatus, TvShowData } from "../Types/Types";
 
 const startGame = "What is the movie name?";
 const gameOver = "Game Over";

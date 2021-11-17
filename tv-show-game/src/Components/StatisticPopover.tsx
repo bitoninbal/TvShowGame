@@ -1,6 +1,9 @@
 import { IconButton, Popover, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { PopOverContentStyled, PopOverContentWrapperStyled } from "../Styles";
+import {
+  PopOverContentStyled,
+  PopOverContentWrapperStyled,
+} from "../Styles/Styles";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 
 interface StatisticPopoverProps {

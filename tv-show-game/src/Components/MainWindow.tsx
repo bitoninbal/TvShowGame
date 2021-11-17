@@ -5,7 +5,7 @@ import {
   GameStatusStyled,
   HintOverViewStyled,
   MainWindowStyled,
-} from "../Styles";
+} from "../Styles/Styles";
 import { ChackTheGuess } from "./ChackTheGuess";
 import { IconsComponent } from "./IconsComponent";
 import TextField from "@mui/material/TextField";
