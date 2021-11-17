@@ -1,15 +1,15 @@
 import React from "react";
-import { WordWithMissingLetters } from "./Components/WordWithMissingLetters";
+import { WordWithMissingLetters } from "./WordWithMissingLetters";
 import {
   CenterStyled,
   GameStatusStyled,
   HintOverViewStyled,
   MainWindowStyled,
-} from "./Styles";
-import { ButtonsComponent } from "./Components/ButtonsComponent";
-import { IconsComponent } from "./Components/IconsComponent";
+} from "../Styles";
+import { ChackTheGuess } from "./ChackTheGuess";
+import { IconsComponent } from "./IconsComponent";
 import TextField from "@mui/material/TextField";
-import { useMissingLetters } from "./Hooks/useMissingLetters";
+import { useMissingLetters } from "../Hooks/useMissingLetters";
 
 export const MainWindow = () => {
   const {
@@ -57,7 +57,7 @@ export const MainWindow = () => {
           focused
           label="Your guess"
         />
-        <ButtonsComponent {...buttonProps} />
+        <ChackTheGuess {...buttonProps} />
         <HintOverViewStyled>{hintOverview}</HintOverViewStyled>
       </CenterStyled>
     </MainWindowStyled>

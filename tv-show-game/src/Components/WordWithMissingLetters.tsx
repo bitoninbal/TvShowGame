@@ -4,7 +4,7 @@ import { LiStyled, UlStyled } from "../Styles";
 interface WordWithMissingLettersProps {
   wordWithMissingLeters: any;
 }
-const borderBottonPerpel = "2px solid #303030";
+const borderBottonPurple = "2px solid #303030";
 const borderBottonGray = " 2px solid #9c27b0";
 export const WordWithMissingLetters = (props: WordWithMissingLettersProps) => {
   const { wordWithMissingLeters } = props;
@@ -17,7 +17,7 @@ export const WordWithMissingLetters = (props: WordWithMissingLettersProps) => {
             <LiStyled
               style={{
                 borderBottom:
-                  letter === " " ? borderBottonPerpel : borderBottonGray,
+                  letter === " " ? borderBottonPurple : borderBottonGray,
               }}
               key={index}
             >

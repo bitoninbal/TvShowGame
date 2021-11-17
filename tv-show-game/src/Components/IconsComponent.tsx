@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import IconButton from "@mui/material/IconButton";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
-import {
-  IconsStyled,
-  IconsWrapperStyled,
-  LifeStatusStyled,
-  PopOverContentStyled,
-  PopOverContentWrapperStyled,
-} from "../Styles";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import { IconsStyled, IconsWrapperStyled, LifeStatusStyled } from "../Styles";
 import { Tooltip } from "@mui/material";
+import { StatisticPopover } from "./StatisticPopover";
 
 interface IconsComponentProps {
   numOfHint: number;
@@ -30,55 +22,11 @@ export const IconsComponent = (props: IconsComponentProps) => {
     handleHintIcon,
   } = props;
 
-  const [
-    isEqualizerPopovereOpen,
-    setIsEqualizerPopovereOpen,
-  ] = useState<boolean>(false);
-
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
-
-  const handleEqualizerIcon = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setIsEqualizerPopovereOpen(!isEqualizerPopovereOpen);
-    setAnchorEl(event.currentTarget);
+  const statisticPopoverProps = {
+    numOfHint,
+    rightAnswer,
+    wrongAnswer,
   };
-
-  const handleClose = () => {
-    setIsEqualizerPopovereOpen(!isEqualizerPopovereOpen);
-    setAnchorEl(null);
-  };
-
-  const popoverContent = () => {
-    return (
-      <PopOverContentWrapperStyled>
-        <PopOverContentStyled>Right Answer: {rightAnswer}</PopOverContentStyled>
-        <PopOverContentStyled>Wrong Answer: {wrongAnswer}</PopOverContentStyled>
-        <PopOverContentStyled>Number Of Hint: {numOfHint}</PopOverContentStyled>
-      </PopOverContentWrapperStyled>
-    );
-  };
-
-  const renderPopover = () => {
-    return (
-      <Popover
-        open={isEqualizerPopovereOpen}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <Typography
-          component={popoverContent}
-          style={{ background: "beige" }}
-          sx={{ p: 2 }}
-        ></Typography>
-      </Popover>
-    );
-  };
-
   return (
     <IconsWrapperStyled>
       <IconsStyled>
@@ -87,13 +35,7 @@ export const IconsComponent = (props: IconsComponentProps) => {
             <LightbulbIcon />
           </IconButton>
         </Tooltip>
-
-        <Tooltip title="Statistics">
-          <IconButton onClick={handleEqualizerIcon} color="primary">
-            <EqualizerIcon />
-          </IconButton>
-        </Tooltip>
-        {renderPopover()}
+        <StatisticPopover {...statisticPopoverProps} />
       </IconsStyled>
       <LifeStatusStyled>Life: {lifePoint}</LifeStatusStyled>
     </IconsWrapperStyled>

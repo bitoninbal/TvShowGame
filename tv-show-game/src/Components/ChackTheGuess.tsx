@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { GameStatus } from "../Types";
 
-interface ButtonsComponentProps {
+interface ChackTheGuessProps {
   onCheckTheGuessClick: () => void;
   gameStatus: GameStatus;
   onStartOver: () => void;
@@ -11,7 +11,7 @@ interface ButtonsComponentProps {
 const onGame = "Check the Guess";
 const startOver = "Start over";
 
-export const ButtonsComponent = (props: ButtonsComponentProps) => {
+export const ChackTheGuess = (props: ChackTheGuessProps) => {
   const { onCheckTheGuessClick, gameStatus, onStartOver } = props;
 
   const handleOnClick = () => {

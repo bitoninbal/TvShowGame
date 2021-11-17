@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { MainWindow } from "./MainWindow";
+import { MainWindow } from "./Components/MainWindow";
 import { MainWindowWrapperStyled } from "./Styles";
 
 const App = () => {
