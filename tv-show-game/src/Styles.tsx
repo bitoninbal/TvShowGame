@@ -4,8 +4,8 @@ export const MainWindowStyled = styled.div`
   justify-content: flex-start;
   display: flex;
   flex-direction: column;
-  width: 770px;
-  height: 500px;
+  width: 100%;
+
   align-items: center;
   border: 2px solid rebeccapurple;
   background: #303030;
@@ -25,6 +25,11 @@ export const GameStatusStyled = styled.h1`
 export const IconsStyled = styled.div`
   display: flex;
   align-self: flex-start;
+`;
+
+export const PopOverContentWrapperStyled = styled.div`
+  background: beige;
+  padding: 3px 10px;
 `;
 
 export const LifeStatusStyled = styled.div`

@@ -15,7 +15,7 @@ export const MainWindow = () => {
   const {
     handleInputChange,
     wordWithMissingLeters,
-    handleCheckTheGusseButtonClick,
+    handleCheckTheGuessButtonClick,
     gameStatus,
     status,
     initGameParams,
@@ -29,7 +29,7 @@ export const MainWindow = () => {
   } = useMissingLetters();
 
   const buttonProps = {
-    onCheckTheGusseClick: handleCheckTheGusseButtonClick,
+    onCheckTheGuessClick: handleCheckTheGuessButtonClick,
     gameStatus: gameStatus,
     onStartOver: initGameParams,
   };
@@ -41,6 +41,7 @@ export const MainWindow = () => {
     lifePoint,
     handleHintIcon,
   };
+
   return (
     <MainWindowStyled>
       <IconsComponent {...iconProps} />
@@ -54,6 +55,7 @@ export const MainWindow = () => {
           color="secondary"
           value={answer}
           focused
+          label="Your guess"
         />
         <ButtonsComponent {...buttonProps} />
         <HintOverViewStyled>{hintOverview}</HintOverViewStyled>

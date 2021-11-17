@@ -3,11 +3,12 @@ import { GameStatus, TvShowData } from "../Types";
 
 const startGame = "What is the movie name?";
 const gameOver = "Game Over";
+const space = [" "];
 
 export const useMissingLetters = () => {
-  const [currentWord, setCurrentWord] = useState<string>("hfhfkj");
+  const [currentWord, setCurrentWord] = useState<string>("");
   const [wordIndex, setWordIndex] = useState<number>(0);
-  const [answer, setAnswer] = useState<string>();
+  const [answer, setAnswer] = useState<string>("");
   const [score, setScore] = useState<number>(0);
   const [numOfHint, setNumOfHint] = useState<number>(0);
   const [lifePoint, setLifePoint] = useState<number>(3);
@@ -46,21 +47,32 @@ export const useMissingLetters = () => {
     }
   }, [lifePoint]);
 
+  const removeRandomLetters = (word: string[]) => {
+    const randomIndex1 = Math.floor(Math.random() * (word.length - 1));
+    const randomIndex2 = Math.floor(Math.random() * (word.length - 1));
+    word[randomIndex1] = "";
+    word[randomIndex2] = "";
+    return word.concat(space);
+  };
+
   const createMissingLetters = (currentWord: string) => {
     const splitToWords = currentWord.split(" ");
     const arr: [string[]] = [[]];
-    splitToWords.map((word) => {
-      const temp = word.split("");
-      const randomIndex1 = Math.floor(Math.random() * (temp.length + 1));
-      const randomIndex2 = Math.floor(Math.random() * (temp.length + 1));
-      temp[randomIndex1] = "";
-      temp[randomIndex2] = "";
-      arr.push(temp);
+
+    splitToWords.forEach((word) => {
+      const letters = word.split("");
+      if (letters.length < 3) {
+        arr.push(letters.concat(space));
+      } else {
+        const wordWithspace = removeRandomLetters(letters);
+        arr.push(wordWithspace);
+      }
     });
+
     setWordWithMissingLeters(arr);
   };
 
-  const handleCheckTheGusseButtonClick = () => {
+  const handleCheckTheGuessButtonClick = () => {
     if (answer === currentWord) {
       setWordIndex(wordIndex + 1);
       setRightAnswer(rightAnswer + 1);
@@ -99,7 +111,7 @@ export const useMissingLetters = () => {
 
   return {
     wordWithMissingLeters,
-    handleCheckTheGusseButtonClick,
+    handleCheckTheGuessButtonClick,
     handleInputChange,
     gameStatus,
     status,

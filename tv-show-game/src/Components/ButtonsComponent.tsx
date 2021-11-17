@@ -3,24 +3,24 @@ import Button from "@mui/material/Button";
 import { GameStatus } from "../Types";
 
 interface ButtonsComponentProps {
-  onCheckTheGusseClick: () => void;
+  onCheckTheGuessClick: () => void;
   gameStatus: GameStatus;
   onStartOver: () => void;
 }
 
-const onGame = "Check the gusse";
+const onGame = "Check the Guess";
 const startOver = "Start over";
 
 export const ButtonsComponent = (props: ButtonsComponentProps) => {
-  const { onCheckTheGusseClick, gameStatus, onStartOver } = props;
+  const { onCheckTheGuessClick, gameStatus, onStartOver } = props;
 
   const handleOnClick = () => {
-    if (gameStatus === GameStatus.ON_GAME) onCheckTheGusseClick();
+    if (gameStatus === GameStatus.ON_GAME) onCheckTheGuessClick();
     else onStartOver();
   };
 
   return (
-    <Button onClick={handleOnClick} variant="outlined">
+    <Button onClick={handleOnClick} variant="contained" size="large">
       {gameStatus === GameStatus.ON_GAME ? onGame : startOver}
     </Button>
   );
