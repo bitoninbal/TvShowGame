@@ -5,9 +5,7 @@ export const MainWindowStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
   align-items: center;
-  border: 2px solid rebeccapurple;
   background: #303030;
 `;
 
@@ -16,6 +14,7 @@ export const MainWindowWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #303030;
 `;
 
 export const GameStatusStyled = styled.h1`
