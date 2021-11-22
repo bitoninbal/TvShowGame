@@ -7,7 +7,7 @@ import {
   MainWindowStyled,
 } from "../Styles/Styles";
 import { ChackTheGuess } from "./ChackTheGuess";
-import { IconsComponent } from "./IconsComponent";
+import { HintAndStatistic } from "./HintAndStatistic";
 import TextField from "@mui/material/TextField";
 import { useMissingLetters } from "../Hooks/useMissingLetters";
 
@@ -26,7 +26,10 @@ export const MainWindow = () => {
     handleHintIcon,
     hintOverview,
     answer,
+    isWrongAnswer,
   } = useMissingLetters();
+
+  const inputLable = isWrongAnswer ? "error" : "Your guess";
 
   const buttonProps = {
     onCheckTheGuessClick: handleCheckTheGuessButtonClick,
@@ -44,18 +47,18 @@ export const MainWindow = () => {
 
   return (
     <MainWindowStyled>
-      <IconsComponent {...iconProps} />
+      <HintAndStatistic {...iconProps} />
       <CenterStyled>
         <GameStatusStyled>{status}</GameStatusStyled>
         <WordWithMissingLetters wordWithMissingLeters={wordWithMissingLeters} />
         <TextField
           sx={{ input: { color: "white" } }}
-          style={{ color: "white" }}
-          onChange={handleInputChange}
+          error={isWrongAnswer}
           color="secondary"
-          value={answer}
+          label={inputLable}
           focused
-          label="Your guess"
+          onChange={handleInputChange}
+          value={answer}
         />
         <ChackTheGuess {...buttonProps} />
         <HintOverViewStyled>{hintOverview}</HintOverViewStyled>

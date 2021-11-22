@@ -10,14 +10,14 @@ import {
 import { Tooltip } from "@mui/material";
 import { StatisticPopover } from "./StatisticPopover";
 
-interface IconsComponentProps {
+interface HintAndStatisticProps {
   numOfHint: number;
   rightAnswer: number;
   wrongAnswer: number;
   lifePoint: number;
   handleHintIcon: () => void;
 }
-export const IconsComponent = (props: IconsComponentProps) => {
+export const HintAndStatistic = (props: HintAndStatisticProps) => {
   const {
     numOfHint,
     rightAnswer,

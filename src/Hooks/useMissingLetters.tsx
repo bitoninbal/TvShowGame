@@ -21,6 +21,7 @@ export const useMissingLetters = () => {
     [string[]]
   >([[]]);
   const [tvShowData, setTvShowData] = useState<TvShowData>();
+  const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(
@@ -81,9 +82,11 @@ export const useMissingLetters = () => {
       setScore(score + 1);
       setHintOverview("");
       setAnswer("");
+      setIsWrongAnswer(false);
     } else {
       setWrongAnswer(wrongAnswer + 1);
       setLifePoint(lifePoint - 1);
+      setIsWrongAnswer(true);
     }
   };
 
@@ -94,7 +97,7 @@ export const useMissingLetters = () => {
   };
 
   const initGameParams = () => {
-    setCurrentWord(tvShowData!.results[0].name);
+    setCurrentWord(tvShowData!.results[0].name.replace("'", "").toLowerCase());
     setWordIndex(0);
     setAnswer("");
     setScore(0);
@@ -104,6 +107,7 @@ export const useMissingLetters = () => {
     setWrongAnswer(0);
     setStatus(startGame);
     setGameStatus(GameStatus.ON_GAME);
+    setIsWrongAnswer(false);
   };
 
   const handleHintIcon = () => {
@@ -125,5 +129,6 @@ export const useMissingLetters = () => {
     handleHintIcon,
     hintOverview,
     answer,
+    isWrongAnswer,
   };
 };
