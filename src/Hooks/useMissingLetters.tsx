@@ -32,7 +32,9 @@ export const useMissingLetters = () => {
 
   useEffect(() => {
     if (tvShowData) {
-      setCurrentWord(tvShowData.results[wordIndex].name);
+      setCurrentWord(
+        tvShowData.results[wordIndex].name.replace("'", "").toLowerCase()
+      );
     }
   }, [tvShowData, wordIndex]);
 
@@ -73,7 +75,7 @@ export const useMissingLetters = () => {
   };
 
   const handleCheckTheGuessButtonClick = () => {
-    if (answer === currentWord) {
+    if (answer.toLowerCase() === currentWord) {
       setWordIndex(wordIndex + 1);
       setRightAnswer(rightAnswer + 1);
       setScore(score + 1);
