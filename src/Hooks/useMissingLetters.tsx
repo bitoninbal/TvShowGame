@@ -108,6 +108,7 @@ export const useMissingLetters = () => {
     setStatusLabel(startGame);
     setGameStatus(GameStatus.ON_GAME);
     setIsWrongAnswer(false);
+    setHintOverview("");
   };
 
   const handleHintIcon = () => {
