@@ -31,6 +31,7 @@ export const HintAndStatistic = (props: HintAndStatisticProps) => {
     rightAnswer,
     wrongAnswer,
   };
+
   return (
     <IconsWrapperStyled>
       <IconsStyled>

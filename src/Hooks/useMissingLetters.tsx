@@ -14,7 +14,7 @@ export const useMissingLetters = () => {
   const [lifePoint, setLifePoint] = useState<number>(3);
   const [rightAnswer, setRightAnswer] = useState<number>(0);
   const [wrongAnswer, setWrongAnswer] = useState<number>(0);
-  const [status, setStatus] = useState<string>(startGame);
+  const [statusLabel, setStatusLabel] = useState<string>(startGame);
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.ON_GAME);
   const [hintOverview, setHintOverview] = useState<string>("");
   const [wordWithMissingLeters, setWordWithMissingLeters] = useState<
@@ -45,7 +45,7 @@ export const useMissingLetters = () => {
 
   useEffect(() => {
     if (lifePoint === 0) {
-      setStatus(gameOver);
+      setStatusLabel(gameOver);
       setGameStatus(GameStatus.GAME_OVER);
     }
   }, [lifePoint]);
@@ -105,7 +105,7 @@ export const useMissingLetters = () => {
     setLifePoint(3);
     setRightAnswer(0);
     setWrongAnswer(0);
-    setStatus(startGame);
+    setStatusLabel(startGame);
     setGameStatus(GameStatus.ON_GAME);
     setIsWrongAnswer(false);
   };
@@ -120,7 +120,7 @@ export const useMissingLetters = () => {
     handleCheckTheGuessButtonClick,
     handleInputChange,
     gameStatus,
-    status,
+    statusLabel,
     initGameParams,
     numOfHint,
     rightAnswer,

@@ -17,7 +17,7 @@ export const MainWindow = () => {
     wordWithMissingLeters,
     handleCheckTheGuessButtonClick,
     gameStatus,
-    status,
+    statusLabel,
     initGameParams,
     numOfHint,
     rightAnswer,
@@ -29,7 +29,7 @@ export const MainWindow = () => {
     isWrongAnswer,
   } = useMissingLetters();
 
-  const inputLable = isWrongAnswer ? "error" : "Your guess";
+  const inputLabel = isWrongAnswer ? "error" : "Your guess";
 
   const buttonProps = {
     onCheckTheGuessClick: handleCheckTheGuessButtonClick,
@@ -49,13 +49,13 @@ export const MainWindow = () => {
     <MainWindowStyled>
       <HintAndStatistic {...iconProps} />
       <CenterStyled>
-        <GameStatusStyled>{status}</GameStatusStyled>
+        <GameStatusStyled>{statusLabel}</GameStatusStyled>
         <WordWithMissingLetters wordWithMissingLeters={wordWithMissingLeters} />
         <TextField
           sx={{ input: { color: "white" } }}
           error={isWrongAnswer}
           color="secondary"
-          label={inputLable}
+          label={inputLabel}
           focused
           onChange={handleInputChange}
           value={answer}
